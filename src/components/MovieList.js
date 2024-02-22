@@ -27,15 +27,15 @@ const MovieList = ({ title, movies }) => {
                 </div>
             </div>
 
-            <div className='hidden md:flex justify-between -mt-20 mb-10'>
+            <div className='hidden md:flex justify-between -mt-[85px] xl:-mt-24 mb-10'>
                 {scrollPosition &&
-                    <button onClick={() => handleScroll(-400)} className=' z-20 p-2 rounded-full bg-gradient-to-l from-gray-300 hover:from-gray-200 hover:scale-125 transition-all'>
-                        <img className="w-6 rotate-180" src={SCROLL_ARROW_ICON} alt="Left Scroll Button" />
+                    <button onClick={() => handleScroll(-400)} className='opacity-55 hover:opacity-100 z-20 p-2 rounded-full bg-gradient-to-l from-gray-700 hover:from-gray-900 hover:scale-125 transition-all'>
+                        <img className="w-6 rotate-90" src={SCROLL_ARROW_ICON} alt="Left Scroll Button" />
                     </button>
                 }
                 {(scrollPosition < 3560) &&
-                    <button onClick={() => handleScroll(400)} className='md:absolute z-20 right-4 p-2 rounded-full bg-gradient-to-r from-gray-300 hover:from-gray-200 hover:scale-125 transition-all'>
-                        <img className="w-6" src={SCROLL_ARROW_ICON} alt="Right Scroll Button" />
+                    <button onClick={() => handleScroll(400)} className='md:absolute opacity-55 hover:opacity-100 z-20 right-4 p-2 rounded-full bg-gradient-to-r from-gray-700 hover:from-gray-900 hover:scale-125 transition-all'>
+                        <img className="w-6 -rotate-90" src={SCROLL_ARROW_ICON} alt="Right Scroll Button" />
                     </button>
                 }
             </div>
