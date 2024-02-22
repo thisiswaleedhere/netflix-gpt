@@ -22,7 +22,7 @@ const VideoDetails = ({ id }) => {
 
                     <div className='hidden sm:block sm:text-sm xl:text-base 2xl:text-xl pt-3 md:pt-4 w-1/2'>{movieDetails.overview}</div>
 
-                    <button className='text-gray-300 bg-gray-100/30 transition-all hover:bg-gray-100 hover:text-black cursor-pointer mt-2 md:mt-5 rounded-md text-xs md:text-lg 2xl:text-3xl px-4 xs:px-6 py-1 xs:py-1.5 md:px-8 md:py-2 2xl:py-3'>
+                    <button className='text-gray-300 bg-gray-100/30 transition-all hover:bg-gray-100 hover:text-black cursor-pointer mt-2 md:mt-5 rounded-md text-xs md:text-lg 2xl:text-2xl px-4 xs:px-6 py-1 xs:py-1.5 md:px-8 md:py-2 2xl:py-3'>
                         Play
                     </button>
 
