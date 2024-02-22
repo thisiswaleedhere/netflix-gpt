@@ -1,15 +1,17 @@
 import React, { useRef, useState } from 'react'
-import { NETFLIX_BG_URL, NETFLIX_LOGO_URL, NETFLIX_USER_ICON } from '../utils/constants';
+import { NETFLIX_BG_URL, NETFLIX_USER_ICON } from '../utils/constants';
 import { checkCredentials } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/userSlice';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fullName = useRef(null);
   const email = useRef(null);
@@ -26,7 +28,7 @@ const LoginForm = () => {
     const result = checkCredentials(email.current?.value, password.current?.value);
     if (result) {
       setErrorMessage(result);
-      console.log('in here'); return
+      return
     }
     // else setErrorMessage(null);
 
@@ -49,7 +51,9 @@ const LoginForm = () => {
               email: email,
               displayName: displayName,
               photoURL: photoURL,
-            }))
+            }));
+            navigate("/browse");
+
           }).catch((error) => {
             setErrorMessage(error.message);
           });
@@ -69,7 +73,7 @@ const LoginForm = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -85,12 +89,12 @@ const LoginForm = () => {
 
       <Header />
 
-      {/* Background and Overlay Element */}
-      <img className='w-full h-screen object-cover' alt='Netflix movie app background' src={NETFLIX_BG_URL} />
-      <div className='absolute z-10 bg-black top-0 left-0 w-full h-full opacity-55'></div>
 
-      {/* Auth Form and Backdrop */}
-      <form onSubmit={(e) => e.preventDefault()} className='absolute z-30 left-0 right-0 text-white w-10/12 md:w-4/12 max-w-[450px] mx-auto top-[20%] p-6 md:px-20 rounded bg-black/60'>
+      <img className='w-full h-screen object-cover' alt='Netflix movie app background' src={NETFLIX_BG_URL} />
+      <div className='absolute min-w-[340px] z-10 bg-black top-0 left-0 w-full h-full opacity-55'></div>
+
+
+      {!auth.currentUser && <form onSubmit={(e) => e.preventDefault()} className='absolute z-30 left-0 right-0 text-white w-10/12 2xl:w-4/12 max-w-[450px] mx-auto top-[20%] p-6 md:px-20 rounded bg-black/60'>
 
         <h1 className='text-left text-3xl font-bold mb-6 md:mb-8'>{isSignInForm ? 'Sign In' : 'Sign Up'}</h1>
 
@@ -105,7 +109,7 @@ const LoginForm = () => {
         {isSignInForm ?
           <p className='text-sm md:text-base'>New to Netflix? <span onClick={toggleForm} className='font-bold hover:cursor-pointer hover:underline'>Sign Up Now.</span></p>
           : <p className='text-sm md:text-base'>Already a user? <span onClick={toggleForm} className='font-bold hover:cursor-pointer hover:underline'>Sign In Now.</span></p>}
-      </form>
+      </form>}
 
 
     </div>

@@ -4,6 +4,8 @@ export const NETFLIX_BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b
 
 export const NETFLIX_USER_ICON = "https://wallpapers.com/images/hd/netflix-profile-pictures-200-x-200-qo9h82134t9nv0j0.jpg"
 
+export const SCROLL_ARROW_ICON = "https://www.svgrepo.com/show/27797/right-arrow.svg";
+
 export const TMDB_API_OPTIONS = {
     method: 'GET',
     headers: {

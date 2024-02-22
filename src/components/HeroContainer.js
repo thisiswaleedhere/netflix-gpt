@@ -4,8 +4,8 @@ import VideoContainer from './VideoContainer';
 
 const HeroContainer = () => {
     const movielist = useSelector((store) => store.movies.newReleases);
+    const heroMovie = movielist?.[9];
 
-    const heroMovie = movielist?.[1];
     return (
         <div className='bg-black' >
             {movielist?.[1] && <VideoContainer movieId={heroMovie.id} />}
